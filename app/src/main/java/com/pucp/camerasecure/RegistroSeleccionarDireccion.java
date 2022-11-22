@@ -4,8 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -14,10 +18,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 public class RegistroSeleccionarDireccion extends AppCompatActivity  implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener {
 
-    Long latitude;
-    Long longitude;
+    Double latitude;
+    Double longitude;
     GoogleMap mMap;
 
     @Override
@@ -25,23 +33,20 @@ public class RegistroSeleccionarDireccion extends AppCompatActivity  implements 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_seleccionar_direccion);
 
-        // se cambia el titulo a 'Solicitudes pendientes' ya que es el Fragment por defecto
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Aceptar solicitud");
+        // to hide title bar (la vaina que esta arriba que dice el nombre de la app "PrestoPucp")
+        try
+        {
+            this.getSupportActionBar().hide();
         }
+        catch (NullPointerException e){}
 
-//        // se obtiene la ubicacion del usuario desde Registro.class
-//        Intent intent = getIntent();
-//        String stringlatitude = intent.getStringExtra("latitude");
-//        String stringlongitude = intent.getStringExtra("longitude");
-//
-//        latitude = latitude.parseLong(stringlatitude);
-//        longitude = longitude.parseLong(stringlongitude);
-//
-//        Log.d("msg latitud en maps", String.valueOf(latitude));
+        // se obtiene la ubicacion del usuario desde Registro.class
+        Intent intent = getIntent();
+        String stringlatitude = intent.getStringExtra("latitude");
+        String stringlongitude = intent.getStringExtra("longitude");
 
-        latitude = (long) -12.0701382;
-        longitude = (long) -77.0791665;
+        latitude = new Double(stringlatitude);
+        longitude = new Double(stringlongitude);
 
         // maps
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.registro_map);
@@ -65,8 +70,8 @@ public class RegistroSeleccionarDireccion extends AppCompatActivity  implements 
 
     @Override
     public void onMapClick(@NonNull LatLng latLng) {
-        latitude = (long) latLng.latitude;
-        longitude = (long) latLng.longitude;
+        latitude =  latLng.latitude;
+        longitude = latLng.longitude;
 
         // se actualiza el marcador del mapa
         mMap.clear();
@@ -78,8 +83,8 @@ public class RegistroSeleccionarDireccion extends AppCompatActivity  implements 
 
     @Override
     public void onMapLongClick(@NonNull LatLng latLng) {
-        latitude = (long) latLng.latitude;
-        longitude = (long) latLng.longitude;
+        latitude = latLng.latitude;
+        longitude =  latLng.longitude;
 
         // se actualiza el marcador del mapa
         mMap.clear();
@@ -88,13 +93,27 @@ public class RegistroSeleccionarDireccion extends AppCompatActivity  implements 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(nuevaPosicion));
     }
 
-    public void confirmarDireccion(){
+    public void confirmarDireccion(View view){
         // se crea un nuevo intent
         Intent intent = new Intent();
 
+        // para obtener el nombre
+        String direccion = "";
+        Geocoder geocoder = new Geocoder(RegistroSeleccionarDireccion.this, Locale.getDefault());
+        try {
+            List<Address> listAdress = geocoder.getFromLocation(latitude, longitude, 1);
+            if(listAdress.size()>0){
+                direccion = listAdress.get(0).getAddressLine(0);
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         // se regresa
-        intent.putExtra("latitud", String.valueOf(latitude));
-        intent.putExtra("longitud", String.valueOf(longitude));
+        intent.putExtra("direccion", direccion);
+        intent.putExtra("latitude", String.valueOf(latitude));
+        intent.putExtra("longitude", String.valueOf(longitude));
         setResult(RESULT_OK, intent);
         finish();
     }

@@ -22,7 +22,7 @@
     <ImageView
         android:id="@+id/box"
         android:layout_width="0dp"
-        android:layout_height="550dp"
+        android:layout_height="555dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
@@ -44,7 +44,7 @@
         android:layout_marginTop="16dp"
         android:text="email"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_apellido" />
+        app:layout_constraintTop_toBottomOf="@+id/register_dni" />
 
     <TextView
         android:id="@+id/textView10"
@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
-        android:text="apellido"
+        android:text="dni"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_nombre" />
 
@@ -127,7 +127,7 @@
         app:strokeWidth="1dp" />
 
     <EditText
-        android:id="@+id/register_apellido"
+        android:id="@+id/register_dni"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -203,10 +203,11 @@
 
     <TextView
         android:id="@+id/register_direccion"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
         android:onClick="obtenerDireccion"
         android:shadowColor="#000000"
         android:shadowDx="0.5"
@@ -214,6 +215,7 @@
         android:shadowRadius="0.24"
         android:text="Ninguna dirección seleccionada"
         android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
