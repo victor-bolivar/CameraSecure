@@ -134,7 +134,7 @@ public class Registro extends AppCompatActivity {
                             // 3. si se crea satifactoriamente, se guarda la info en la real time database
                             if (task.isSuccessful()){
 
-                                Usuario user = new Usuario(nombre, dni, email, celular, "Cliente", latitude, longitude, direccion, "Pendiente");
+                                Usuario user = new Usuario(nombre, dni, email, celular, "Cliente", latitude, longitude, direccion, "Pendiente", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 FirebaseDatabase.getInstance().getReference("users")
                                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                         .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {

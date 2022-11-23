@@ -8,13 +8,15 @@ public class Usuario {
     private String email;
     private String celular;
     private String rol;
+    private String id;
 
-    public Usuario(String nombre, String dni, String email, String celular, String rol) {
+    public Usuario(String nombre, String dni, String email, String celular, String rol, String id) {
         this.nombre = nombre;
         this.dni = dni;
         this.email = email;
         this.celular = celular;
         this.rol = rol;
+        this.id = id;
     }
 
     // atributos para cliente
@@ -23,7 +25,7 @@ public class Usuario {
     private String direccionNombre;
     private String estadoSolicitud;
 
-    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud) {
+    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id) {
         this.nombre = nombre;
         this.dni = dni;
         this.email = email;
@@ -33,6 +35,7 @@ public class Usuario {
         this.direccionLongitud = direccionLongitud;
         this.direccionNombre = direccionNombre;
         this.estadoSolicitud = estadoSolicitud;
+        this.id = id;
     }
 
     // getters and setter
@@ -107,5 +110,13 @@ public class Usuario {
 
     public void setEstadoSolicitud(String estadoSolicitud) {
         this.estadoSolicitud = estadoSolicitud;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

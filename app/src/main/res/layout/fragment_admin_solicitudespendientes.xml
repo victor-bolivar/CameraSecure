@@ -3,12 +3,162 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".admin.admin_solicitudespendientes">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/admin_cancelarsolicitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#920011"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        android:layout_gravity="end"
+        android:layout_marginTop="535dp"
+        android:layout_marginEnd="32dp"
+
+        app:srcCompat="@drawable/ic_crosswhite" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/admin_aceptarsolicitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="608dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#000000"
+        android:clickable="true"
+
+        android:tint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:srcCompat="@drawable/ic_checkwhite" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:foregroundTint="#FFFEFE"
+        android:paddingBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/admin_solicitudespendientes_solicitudid"
+                android:layout_width="288dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="32dp"
+                android:text="Solicitud #"
+                android:textAllCaps="false"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="288dp"
+                android:layout_height="0.5dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="16dp"
+                android:background="#000000" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="53dp"
+                android:layout_marginTop="37dp"
+                android:text="nombres"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/admin_solicitudespendientes_nombre"
+                android:layout_width="288dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="53dp"
+                android:layout_marginTop="4dp" />
+
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="53dp"
+                android:layout_marginTop="16dp"
+                android:text="email"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/admin_solicitudespendientes_email"
+                android:layout_width="288dp"
+                android:layout_height="19dp"
+                android:layout_marginStart="53dp"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="53dp"
+                android:layout_marginTop="16dp"
+                android:text="celular"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/admin_solicitudespendientes_celular"
+                android:layout_width="288dp"
+                android:layout_height="19dp"
+                android:layout_marginStart="53dp"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="53dp"
+                android:layout_marginTop="16dp"
+                android:text="dni"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/admin_solicitudespendientes_dni"
+                android:layout_width="288dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="53dp"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="53dp"
+                android:layout_marginTop="16dp"
+                android:text="dirección"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/admin_solicitudespendientes_direccion"
+                android:layout_width="288dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="53dp"
+                android:layout_marginTop="8dp" />
+
+            <!--         TODO   fragment del mapa -->
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </FrameLayout>
