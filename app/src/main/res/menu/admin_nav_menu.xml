@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+    android:id="@+id/admin_nav_solicitudespendientes"
+    android:title="Solicitudes pendientes"
+    android:icon="@drawable/ic_solicitudespendientes" />
+
+    <item
+        android:id="@+id/admin_nav_visualizarcamaras"
+        android:title="Visualizar cámaras"
+        android:icon="@drawable/ic_visualizarcamaras" />
+
+    <item
+        android:id="@+id/admin_nav_estadisticas"
+        android:title="Estadísticas"
+        android:icon="@drawable/ic_estadisticas" />
+
+    <item
+        android:id="@+id/admin_nav_historialsolicitudes"
+        android:title="Historial solicitudes"
+        android:icon="@drawable/ic_historialsolicitudes" />
+
+    <item
+        android:id="@+id/admin_nav_registronuevodispositivo"
+        android:title="Registrar dispositivo instalado"
+        android:icon="@drawable/ic_registro_nuevo_dispositivo" />
+
+    <item
+        android:id="@+id/admin_nav_micuenta"
+        android:title="Mi cuenta"
+        android:icon="@drawable/ic_micuenta" />
+
+</menu>
