@@ -16,6 +16,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -33,7 +39,9 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class admin_solicitudespendientes extends Fragment {
+public class admin_solicitudespendientes extends Fragment implements OnMapReadyCallback {
+
+    GoogleMap mMap;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -69,6 +77,8 @@ public class admin_solicitudespendientes extends Fragment {
 
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
+        Object mapReference = this;
+
         // binding de elementos UI
         textView_solicitudID = view.findViewById(R.id.admin_solicitudespendientes_solicitudid);
         textView_nombre = view.findViewById(R.id.admin_solicitudespendientes_nombre);
@@ -78,13 +88,6 @@ public class admin_solicitudespendientes extends Fragment {
         textView_direccion = view.findViewById(R.id.admin_solicitudespendientes_direccion);
         floatingActionButton_aceptar = view.findViewById(R.id.admin_aceptarsolicitud);
         floatingActionButton_rechazar = view.findViewById(R.id.admin_cancelarsolicitud);
-
-        return view;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
 
         // se obtienen los datos
         DatabaseReference usersRef = mDatabase.child("users");
@@ -141,6 +144,9 @@ public class admin_solicitudespendientes extends Fragment {
                     textView_dni.setText(usuariopendienteActual.getDni());
                     textView_direccion.setText(usuariopendienteActual.getDireccionNombre());
 
+                    // maps
+                    SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.admin_solicitudespendientes_map);
+                    mapFragment.getMapAsync((OnMapReadyCallback) mapReference);
 
                 }
 
@@ -153,6 +159,18 @@ public class admin_solicitudespendientes extends Fragment {
             }
         };
         usersRef.addListenerForSingleValueEvent(valueEventListener);
+
+
+
+
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
 
         // TODO
 //        //  aceptar solicitud
@@ -176,4 +194,14 @@ public class admin_solicitudespendientes extends Fragment {
 
     }
 
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // posicion inicial del mapa
+        LatLng ubicacionUsuario = new LatLng(Double.parseDouble(usuariopendienteActual.getDireccionLatitud()),Double.parseDouble(usuariopendienteActual.getDireccionLongitud()));
+        mMap.addMarker(new MarkerOptions().position(ubicacionUsuario).title("Cliente"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(ubicacionUsuario));
+
+    }
 }
