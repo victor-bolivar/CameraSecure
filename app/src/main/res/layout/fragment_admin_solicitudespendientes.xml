@@ -11,15 +11,15 @@
         android:id="@+id/admin_cancelarsolicitud"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#920011"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
         android:layout_gravity="end"
         android:layout_marginTop="535dp"
         android:layout_marginEnd="32dp"
-
+        android:backgroundTint="#FFFFFF"
+        app:tint="@color/black"
+        android:clickable="true"
+        android:tint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_crosswhite" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -31,18 +31,17 @@
         android:layout_marginEnd="32dp"
         android:backgroundTint="#000000"
         android:clickable="true"
-
-        android:tint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
-        app:srcCompat="@drawable/ic_checkwhite" />
+        app:srcCompat="@drawable/ic_checkwhite"
+        app:tint="@color/white" />
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foregroundTint="#FFFEFE"
+        android:foregroundTintMode="src_in"
         android:paddingBottom="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -163,8 +162,6 @@
                 map:cameraZoom="10"
                 map:uiRotateGestures="true"
                 map:uiZoomControls="true" />
-
-
 
 
         </LinearLayout>

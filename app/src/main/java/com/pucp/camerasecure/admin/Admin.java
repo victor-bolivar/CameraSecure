@@ -103,21 +103,7 @@ public class Admin extends AppCompatActivity {
             }
         });
 
-        // 4. se cambia el nombre del usuario para que salga en el NavDrawer
-        mDatabase.child("users").child(mAuth.getCurrentUser().getUid()).get().addOnCompleteListener(task -> {
-            if (!task.isSuccessful()) {
-                Log.e("msg / firebase", "Error getting data", task.getException());
-            }
-            else {
-                Log.d("msg / firebase", String.valueOf(task.getResult().getValue()));
-                HashMap<String, String> data = (HashMap<String, String>) task.getResult().getValue();
 
-                String nombreCompleto = data.get("nombres");
-                TextView textView_navdrawer_nombre = findViewById(R.id.admin_navdrawer_nombreusuario);
-                textView_navdrawer_nombre.setText(nombreCompleto);
-                Log.d("msg", nombreCompleto);
-            }
-        });
 
 
     }
@@ -143,6 +129,26 @@ public class Admin extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+
+        // 4. se cambia el nombre del usuario para que salga en el NavDrawer
+        mDatabase.child("users").child(mAuth.getCurrentUser().getUid()).get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                Log.e("msg / firebase", "Error getting data", task.getException());
+            }
+            else {
+                Log.d("msg / firebase", String.valueOf(task.getResult().getValue()));
+                HashMap<String, String> data = (HashMap<String, String>) task.getResult().getValue();
+
+                String nombreCompleto = data.get("nombres");
+                Log.d("msg / null", String.valueOf(nombreCompleto));
+                if (nombreCompleto!=null){
+                    TextView textView_navdrawer_nombre = findViewById(R.id.admin_navdrawer_nombreusuario);
+                    textView_navdrawer_nombre.setText(nombreCompleto);
+                    Log.d("msg", nombreCompleto);
+                }
+
+            }
+        });
     }
 
     public void logout(View view){

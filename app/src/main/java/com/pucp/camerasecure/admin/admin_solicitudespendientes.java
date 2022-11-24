@@ -1,5 +1,6 @@
 package com.pucp.camerasecure.admin;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -60,7 +61,9 @@ public class admin_solicitudespendientes extends Fragment implements OnMapReadyC
     private int REQUEST_CODE_ACEPTAR_SOLICITUD = 2;
 
     private List<Usuario> usuariosPendientes;
-    private Usuario usuariopendienteActual;
+    private Usuario usuariopendienteActual = null;
+
+    Object mapReference;
 
     public admin_solicitudespendientes(){
         super(R.layout.fragment_admin_solicitudespendientes);
@@ -77,7 +80,7 @@ public class admin_solicitudespendientes extends Fragment implements OnMapReadyC
 
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
-        Object mapReference = this;
+        mapReference = this;
 
         // binding de elementos UI
         textView_solicitudID = view.findViewById(R.id.admin_solicitudespendientes_solicitudid);
@@ -88,6 +91,14 @@ public class admin_solicitudespendientes extends Fragment implements OnMapReadyC
         textView_direccion = view.findViewById(R.id.admin_solicitudespendientes_direccion);
         floatingActionButton_aceptar = view.findViewById(R.id.admin_aceptarsolicitud);
         floatingActionButton_rechazar = view.findViewById(R.id.admin_cancelarsolicitud);
+
+
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
         // se obtienen los datos
         DatabaseReference usersRef = mDatabase.child("users");
@@ -119,19 +130,16 @@ public class admin_solicitudespendientes extends Fragment implements OnMapReadyC
 
                 if(usuariosPendientes.size() == 0){
                     // si no hay solicitudes restantes
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
-                    builder1.setMessage("Buen trabajo! No hay mas solicitudes pendientes por revisar");
-                    builder1.setCancelable(true);
+                    dialogNoHayMasSolicitudesPendientes();
 
-                    builder1.setPositiveButton(
-                            "Aceptar",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
+                    // se limpianl los datos
+                    usuariopendienteActual = null;
+                    textView_solicitudID.setText("No hay mas solicitudes");
+                    textView_nombre.setText("");
+                    textView_email.setText("");
+                    textView_celular.setText("");
+                    textView_dni.setText("");
+                    textView_direccion.setText("");
                 } else {
 
                     // se pinta el primer elemento
@@ -162,36 +170,105 @@ public class admin_solicitudespendientes extends Fragment implements OnMapReadyC
 
 
 
+        //  aceptar solicitud
+        floatingActionButton_aceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (usuariopendienteActual == null){
+                    dialogNoHayMasSolicitudesPendientes();
+                } else {
+                    Intent intent = new Intent(getContext(), admin_aceptarsolicitud.class);
+                    startActivityForResult(intent, REQUEST_CODE_ACEPTAR_SOLICITUD);
+                }
 
-        return view;
+            }
+        });
+
+
+        //  rechazar solicitud
+        floatingActionButton_rechazar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (usuariopendienteActual == null){
+                    dialogNoHayMasSolicitudesPendientes();
+                } else {
+                    Intent intent = new Intent(getContext(), admin_rechazarsolicitud.class);
+                    startActivityForResult(intent, REQUEST_CODE_RECHAZAR_SOLICITUD);
+                }
+
+
+            }
+        });
+
+    }
+
+    public void dialogNoHayMasSolicitudesPendientes(){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
+        builder1.setMessage("Buen trabajo! No hay mas solicitudes pendientes por revisar");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Aceptar",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if(resultCode== Activity.RESULT_OK){
 
-        // TODO
-//        //  aceptar solicitud
-//        floatingActionButton_aceptar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getContext(), uti_aceptarsolicitud.class);
-//                startActivityForResult(intent, REQUEST_CODE_ACEPTAR_SOLICITUD);
-//            }
-//        });
+            if(requestCode==REQUEST_CODE_RECHAZAR_SOLICITUD){
+
+//                String motivo = data.getStringExtra("motivo");
+//                solicitudActual.setMotivoRechazo(motivo);
 //
+//                // se guarda en solicitudes rechazadas
+//                mDatabase.child("solicitudesRechazadas").child(solicitudActual.getId()).setValue(solicitudActual);
 //
-//        //  rechazar solicitud
-//        floatingActionButton_rechazar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getContext(), uti_rechazarsolicitud.class);
-//                startActivityForResult(intent, REQUEST_CODE_RECHAZAR_SOLICITUD);
-//            }
-//        });
+//                // se borra de solicitudes pendientes
+//                mDatabase.child("solicitudesPendientes").child(solicitudActual.getId()).removeValue();
+//
+//                // se manda la notificacion (correo + notificacion app) al cliente, indicando que se rechazo su solicitud
+//                notificarCliente("rechazo");
 
+            } else if (requestCode == REQUEST_CODE_ACEPTAR_SOLICITUD){
+                String fecha = data.getStringExtra("fecha");
+                String hora = data.getStringExtra("hora");
+                Log.d("msg", fecha + " "+ hora);
+
+                usuariopendienteActual.setFechaIstalacion(fecha + " " + hora);
+                usuariopendienteActual.setEstadoSolicitud("Aprobado");
+
+                // se guarda en solicitudes aprobadas (ya que usa el mismo ID, solo se chancaria en la DB con la info actual)
+                mDatabase.child("users").child(usuariopendienteActual.getId()).setValue(usuariopendienteActual);
+
+                // se manda la notificacion (correo + notificacion app) al cliente, indicando que se acepto su solicitud
+                notificarCliente("Aprobado");
+
+
+            }
+
+        }
+
+    }
+
+    public void notificarCliente(String resultado){
+        // TODO se enviara la notificacion a la app del cliente
+        // TODO se enviara el correo al usuario usando el backend microservicios de la app
+
+        if (resultado.equals("aceptado")){
+
+        } else if (resultado.equals("rechazo")){
+
+        }
     }
 
     @Override
@@ -204,4 +281,6 @@ public class admin_solicitudespendientes extends Fragment implements OnMapReadyC
         mMap.moveCamera(CameraUpdateFactory.newLatLng(ubicacionUsuario));
 
     }
+
+
 }

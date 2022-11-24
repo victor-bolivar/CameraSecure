@@ -38,7 +38,33 @@ public class Usuario {
         this.id = id;
     }
 
+    // para cliente con solicitud aprobada
+    private String fechaIstalacion;
+
+    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String fechaIstalacion) {
+        this.nombre = nombre;
+        this.dni = dni;
+        this.email = email;
+        this.celular = celular;
+        this.rol = rol;
+        this.direccionLatitud = direccionLatitud;
+        this.direccionLongitud = direccionLongitud;
+        this.direccionNombre = direccionNombre;
+        this.estadoSolicitud = estadoSolicitud;
+        this.id = id;
+        this.fechaIstalacion = fechaIstalacion;
+    }
+
+
     // getters and setter
+
+    public String getFechaIstalacion() {
+        return fechaIstalacion;
+    }
+
+    public void setFechaIstalacion(String fechaIstalacion) {
+        this.fechaIstalacion = fechaIstalacion;
+    }
 
     public String getNombre() {
         return nombre;
