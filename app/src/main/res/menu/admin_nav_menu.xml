@@ -12,11 +12,6 @@
         android:icon="@drawable/ic_visualizarcamaras" />
 
     <item
-        android:id="@+id/admin_nav_estadisticas"
-        android:title="Estadísticas"
-        android:icon="@drawable/ic_estadisticas" />
-
-    <item
         android:id="@+id/admin_nav_historialsolicitudes"
         android:title="Historial solicitudes"
         android:icon="@drawable/ic_historialsolicitudes" />

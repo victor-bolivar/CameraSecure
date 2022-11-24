@@ -70,10 +70,6 @@ public class Admin extends AppCompatActivity {
                         fragment = new admin_visualizarcamaras();
                         title  = "Visualizar cámaras";
                         break;
-                    case R.id.admin_nav_estadisticas:
-                        fragment = new admin_estadisticas();
-                        title  = "Estadísticas";
-                        break;
                     case R.id.admin_nav_historialsolicitudes:
                         fragment = new admin_historialsolicitudes();
                         title  = "Historial de solicitudes";

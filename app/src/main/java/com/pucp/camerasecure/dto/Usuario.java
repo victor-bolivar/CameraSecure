@@ -40,8 +40,9 @@ public class Usuario {
 
     // para cliente con solicitud aprobada
     private String fechaIstalacion;
+    private String horaInstalacion;
 
-    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String fechaIstalacion) {
+    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String fechaIstalacion, String horaInstalacion) {
         this.nombre = nombre;
         this.dni = dni;
         this.email = email;
@@ -53,10 +54,44 @@ public class Usuario {
         this.estadoSolicitud = estadoSolicitud;
         this.id = id;
         this.fechaIstalacion = fechaIstalacion;
+        this.horaInstalacion = horaInstalacion;
+    }
+
+    // para cliente con solicitud rechazada
+    private String motivoRechazo;
+
+    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String motivoRechazo) {
+        this.nombre = nombre;
+        this.dni = dni;
+        this.email = email;
+        this.celular = celular;
+        this.rol = rol;
+        this.direccionLatitud = direccionLatitud;
+        this.direccionLongitud = direccionLongitud;
+        this.direccionNombre = direccionNombre;
+        this.estadoSolicitud = estadoSolicitud;
+        this.id = id;
+        this.motivoRechazo = motivoRechazo;
     }
 
 
     // getters and setter
+
+    public String getHoraInstalacion() {
+        return horaInstalacion;
+    }
+
+    public void setHoraInstalacion(String horaInstalacion) {
+        this.horaInstalacion = horaInstalacion;
+    }
+
+    public String getMotivoRechazo() {
+        return motivoRechazo;
+    }
+
+    public void setMotivoRechazo(String motivoRechazo) {
+        this.motivoRechazo = motivoRechazo;
+    }
 
     public String getFechaIstalacion() {
         return fechaIstalacion;

@@ -227,24 +227,24 @@ public class admin_solicitudespendientes extends Fragment implements OnMapReadyC
 
             if(requestCode==REQUEST_CODE_RECHAZAR_SOLICITUD){
 
-//                String motivo = data.getStringExtra("motivo");
-//                solicitudActual.setMotivoRechazo(motivo);
-//
-//                // se guarda en solicitudes rechazadas
-//                mDatabase.child("solicitudesRechazadas").child(solicitudActual.getId()).setValue(solicitudActual);
-//
-//                // se borra de solicitudes pendientes
-//                mDatabase.child("solicitudesPendientes").child(solicitudActual.getId()).removeValue();
-//
-//                // se manda la notificacion (correo + notificacion app) al cliente, indicando que se rechazo su solicitud
-//                notificarCliente("rechazo");
+                String motivo = data.getStringExtra("motivo");
+
+                usuariopendienteActual.setEstadoSolicitud("Rechazado");
+                usuariopendienteActual.setMotivoRechazo(motivo);
+
+                // se guarda en solicitudes rechazadas (ya que usa el mismo UID, solo se chancaria en la DB con la info actual)
+                mDatabase.child("users").child(usuariopendienteActual.getId()).setValue(usuariopendienteActual);
+
+                // se manda la notificacion (correo + notificacion app) al cliente, indicando que se acepto su solicitud
+                notificarCliente("Rechazado");
 
             } else if (requestCode == REQUEST_CODE_ACEPTAR_SOLICITUD){
                 String fecha = data.getStringExtra("fecha");
                 String hora = data.getStringExtra("hora");
                 Log.d("msg", fecha + " "+ hora);
 
-                usuariopendienteActual.setFechaIstalacion(fecha + " " + hora);
+                usuariopendienteActual.setFechaIstalacion(fecha);
+                usuariopendienteActual.setHoraInstalacion(hora);
                 usuariopendienteActual.setEstadoSolicitud("Aprobado");
 
                 // se guarda en solicitudes aprobadas (ya que usa el mismo ID, solo se chancaria en la DB con la info actual)

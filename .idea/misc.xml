@@ -19,9 +19,10 @@
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/activity_registro.xml" value="0.5" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/activity_registro_direccion.xml" value="0.25" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/activity_registro_seleccionar_direccion.xml" value="0.25" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/admin_historialsolicitudes_item.xml" value="0.34169278996865204" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/admin_nav_header.xml" value="0.33" />
-        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/fragment_admin_estadisticas.xml" value="0.171225937183384" />
-        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/fragment_admin_historialsolicitudes.xml" value="0.1" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/fragment_admin_estadisticas.xml" value="0.4149377593360996" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/fragment_admin_historialsolicitudes.xml" value="0.33" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/fragment_admin_micuenta.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/fragment_admin_solicitudespendientes.xml" value="0.4056525353283458" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/fragment_admin_visualizarcamaras.xml" value="0.17806484295845998" />
