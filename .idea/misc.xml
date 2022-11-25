@@ -3,10 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.112" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/drawable/box.xml" value="0.3665" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/drawable/ic_checkwhite.xml" value="0.304" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/drawable/ic_crosswhite.xml" value="0.3675" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/drawable/ic_estadisticas.xml" value="0.1" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/drawable/ic_historialsolicitudes.xml" value="0.112" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/drawable/ic_launcher_background.xml" value="0.112" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/drawable/ic_micuenta.xml" value="0.112" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/drawable/ic_registro_nuevo_dispositivo.xml" value="0.112" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/drawable/ic_solicitudespendientes.xml" value="0.112" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/drawable/ic_visualizarcamaras.xml" value="0.112" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/drawable/line.xml" value="0.3665" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/activity_admin.xml" value="0.1" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/activity_admin_aceptarsolicitud.xml" value="0.5" />
@@ -19,14 +26,18 @@
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/activity_registro.xml" value="0.5" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/activity_registro_direccion.xml" value="0.25" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/activity_registro_seleccionar_direccion.xml" value="0.25" />
-        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/admin_historialsolicitudes_item.xml" value="0.34169278996865204" />
-        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/admin_nav_header.xml" value="0.33" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/admin_historialsolicitudes_item.xml" value="0.67" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/admin_nav_header.xml" value="0.19047619047619047" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/cliente_nav_header.xml" value="0.1" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/fragment_admin_estadisticas.xml" value="0.4149377593360996" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/fragment_admin_historialsolicitudes.xml" value="0.33" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/fragment_admin_micuenta.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/fragment_admin_solicitudespendientes.xml" value="0.4056525353283458" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/fragment_admin_visualizarcamaras.xml" value="0.17806484295845998" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/fragment_cliente_estadosolicitud.xml" value="0.17401215805471124" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/layout/fragment_cliente_micamara.xml" value="0.171225937183384" />
         <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/menu/admin_nav_menu.xml" value="0.2037037037037037" />
+        <entry key="..\:/Users/victo/Documents/PUCP/CameraSecure/app/src/main/res/menu/cliente_nav_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

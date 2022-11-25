@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/cliente_nav_micuenta"
+        android:title="Mi cuenta"
+        android:icon="@drawable/ic_micuenta" />
+    <item
+        android:id="@+id/cliente_nav_micamara"
+        android:title="Mi cámara"
+        android:icon="@drawable/ic_visualizarcamaras" />
+    <item
+        android:id="@+id/cliente_nav_capturas"
+        android:title="Capturas de video"
+        android:icon="@drawable/ic_capturasvideo" />
+    <item
+        android:id="@+id/cliente_nav_estadosolicitud"
+        android:title="Estado de solicitud"
+        android:icon="@drawable/ic_solicitudespendientes" />
+
+
+</menu>

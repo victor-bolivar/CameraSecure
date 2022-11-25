@@ -24,8 +24,9 @@ public class Usuario {
     private String direccionLongitud;
     private String direccionNombre;
     private String estadoSolicitud;
+    private String fechaHoraRegistro;
 
-    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id) {
+    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String fechaHoraRegistro) {
         this.nombre = nombre;
         this.dni = dni;
         this.email = email;
@@ -36,13 +37,14 @@ public class Usuario {
         this.direccionNombre = direccionNombre;
         this.estadoSolicitud = estadoSolicitud;
         this.id = id;
+        this.fechaHoraRegistro = fechaHoraRegistro;
     }
 
     // para cliente con solicitud aprobada
     private String fechaIstalacion;
     private String horaInstalacion;
 
-    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String fechaIstalacion, String horaInstalacion) {
+    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String fechaHoraRegistro, String fechaIstalacion, String horaInstalacion) {
         this.nombre = nombre;
         this.dni = dni;
         this.email = email;
@@ -53,6 +55,7 @@ public class Usuario {
         this.direccionNombre = direccionNombre;
         this.estadoSolicitud = estadoSolicitud;
         this.id = id;
+        this.fechaHoraRegistro = fechaHoraRegistro;
         this.fechaIstalacion = fechaIstalacion;
         this.horaInstalacion = horaInstalacion;
     }
@@ -60,7 +63,7 @@ public class Usuario {
     // para cliente con solicitud rechazada
     private String motivoRechazo;
 
-    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String motivoRechazo) {
+    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String fechaHoraRegistro,String motivoRechazo) {
         this.nombre = nombre;
         this.dni = dni;
         this.email = email;
@@ -71,6 +74,7 @@ public class Usuario {
         this.direccionNombre = direccionNombre;
         this.estadoSolicitud = estadoSolicitud;
         this.id = id;
+        this.fechaHoraRegistro = fechaHoraRegistro;
         this.motivoRechazo = motivoRechazo;
     }
 
@@ -179,5 +183,13 @@ public class Usuario {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getFechaHoraRegistro() {
+        return fechaHoraRegistro;
+    }
+
+    public void setFechaHoraRegistro(String fechaHoraRegistro) {
+        this.fechaHoraRegistro = fechaHoraRegistro;
     }
 }

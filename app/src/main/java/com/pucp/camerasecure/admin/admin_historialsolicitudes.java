@@ -184,7 +184,8 @@ public class admin_historialsolicitudes extends Fragment {
                                                 data.get("direccionLongitud"),
                                                 data.get("direccionNombre"),
                                                 data.get("estadoSolicitud"),
-                                                ds.getKey()
+                                                ds.getKey(),
+                                                data.get("fechaHoraRegistro")
                                         ));
                                     } else if (data.get("estadoSolicitud").equals("Aprobado") && data.get("estadoSolicitud").contains(filtroActualEstadosolicitud)){
                                         // 2. se evalua si es una SOLICITUD Aprobado
@@ -199,6 +200,7 @@ public class admin_historialsolicitudes extends Fragment {
                                                 data.get("direccionNombre"),
                                                 data.get("estadoSolicitud"),
                                                 ds.getKey(),
+                                                data.get("fechaHoraRegistro"),
                                                 data.get("fechaIstalacion"),
                                                 data.get("horaInstalacion")
                                         ));
@@ -215,6 +217,7 @@ public class admin_historialsolicitudes extends Fragment {
                                                 data.get("direccionNombre"),
                                                 data.get("estadoSolicitud"),
                                                 ds.getKey(),
+                                                data.get("fechaHoraRegistro"),
                                                 data.get("motivoRechazo")
                                         ));
                                     } else if (data.get("estadoSolicitud").equals("Instalado") && data.get("estadoSolicitud").contains(filtroActualEstadosolicitud)){

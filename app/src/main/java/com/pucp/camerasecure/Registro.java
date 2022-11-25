@@ -19,6 +19,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.pucp.camerasecure.dto.Usuario;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Registro extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -134,7 +137,13 @@ public class Registro extends AppCompatActivity {
                             // 3. si se crea satifactoriamente, se guarda la info en la real time database
                             if (task.isSuccessful()){
 
-                                Usuario user = new Usuario(nombre, dni, email, celular, "Cliente", latitude, longitude, direccion, "Pendiente", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                // se obtiene fecha actual
+                                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+                                Date date = new Date();
+                                String dateCurrent = String.valueOf(formatter.format(date));
+
+                                // se guarda la info del usuario
+                                Usuario user = new Usuario(nombre, dni, email, celular, "Cliente", latitude, longitude, direccion, "Pendiente", FirebaseAuth.getInstance().getCurrentUser().getUid(), dateCurrent);
                                 FirebaseDatabase.getInstance().getReference("users")
                                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                         .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -86,7 +86,9 @@ public class RegistroObtenerDireccion extends AppCompatActivity implements Locat
                 else{
                     Log.d("msg", "vacios");
                     //This is what you need:
-                    locationManager.requestLocationUpdates(bestProvider, 1000, 0, this);
+                    locationManager.requestLocationUpdates(bestProvider, 1, 0, this);
+                    // TODO posible error: si no hay un cache previo, se pide de nuevo pero faltaria regresar al Registro Activity
+//                \
                 }
         break;
     }

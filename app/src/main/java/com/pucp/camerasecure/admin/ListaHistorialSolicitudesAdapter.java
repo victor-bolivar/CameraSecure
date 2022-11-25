@@ -55,6 +55,7 @@ public class ListaHistorialSolicitudesAdapter extends RecyclerView.Adapter<Lista
         TextView textView_estadosolicitud = holder.itemView.findViewById(R.id.admin_historial_estado);
         TextView textView_label_fechamotivo = holder.itemView.findViewById(R.id.admin_historial_enunciado_fechamotivo);
         TextView textView_valor_fechamotivo = holder.itemView.findViewById(R.id.admin_historial_fechamotivo);
+        TextView textView_valor_fecharegistro = holder.itemView.findViewById(R.id.admin_historial_fecharegistro);
 
         textView_nombre.setText(usuario.getNombre());
         textView_email.setText(usuario.getEmail());
@@ -62,6 +63,7 @@ public class ListaHistorialSolicitudesAdapter extends RecyclerView.Adapter<Lista
         textView_celular.setText(usuario.getCelular());
         textView_direccion.setText(usuario.getDireccionNombre());
         textView_id.setText("ID: "+usuario.getId());
+        textView_valor_fecharegistro.setText(usuario.getFechaHoraRegistro());
 
         // TODO Valores para estado "Instalado"
         String estadoSolicitud = usuario.getEstadoSolicitud();

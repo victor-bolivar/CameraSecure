@@ -122,7 +122,8 @@ public class admin_solicitudespendientes extends Fragment implements OnMapReadyC
                                 data.get("direccionLongitud"),
                                 data.get("direccionNombre"),
                                 data.get("estadoSolicitud"),
-                                ds.getKey()
+                                ds.getKey(),
+                                data.get("fechaHoraRegistro")
                         ));
                     }
 
