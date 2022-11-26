@@ -202,7 +202,8 @@ public class admin_historialsolicitudes extends Fragment {
                                                 ds.getKey(),
                                                 data.get("fechaHoraRegistro"),
                                                 data.get("fechaIstalacion"),
-                                                data.get("horaInstalacion")
+                                                data.get("horaInstalacion"),
+                                                data.get("fechaHoraAprobacionRechazo")
                                         ));
                                     } else if (data.get("estadoSolicitud").equals("Rechazado") && data.get("estadoSolicitud").contains(filtroActualEstadosolicitud)){
                                         // 3. se evalua si es una SOLICITUD Rechazado
@@ -218,7 +219,8 @@ public class admin_historialsolicitudes extends Fragment {
                                                 data.get("estadoSolicitud"),
                                                 ds.getKey(),
                                                 data.get("fechaHoraRegistro"),
-                                                data.get("motivoRechazo")
+                                                data.get("motivoRechazo"),
+                                                data.get("fechaHoraAprobacionRechazo")
                                         ));
                                     } else if (data.get("estadoSolicitud").equals("Instalado") && data.get("estadoSolicitud").contains(filtroActualEstadosolicitud)){
                                         // TODO 4. se evalua si es una SOLICITUD Instalado

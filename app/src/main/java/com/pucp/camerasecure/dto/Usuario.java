@@ -25,6 +25,7 @@ public class Usuario {
     private String direccionNombre;
     private String estadoSolicitud;
     private String fechaHoraRegistro;
+    private String fechaHoraAprobacionRechazo;
 
     public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String fechaHoraRegistro) {
         this.nombre = nombre;
@@ -41,10 +42,10 @@ public class Usuario {
     }
 
     // para cliente con solicitud aprobada
-    private String fechaIstalacion;
+    private String fechaInstalacion;
     private String horaInstalacion;
 
-    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String fechaHoraRegistro, String fechaIstalacion, String horaInstalacion) {
+    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String fechaHoraRegistro, String fechaIstalacion, String horaInstalacion, String fechaHoraAprobacionRechazo) {
         this.nombre = nombre;
         this.dni = dni;
         this.email = email;
@@ -56,14 +57,15 @@ public class Usuario {
         this.estadoSolicitud = estadoSolicitud;
         this.id = id;
         this.fechaHoraRegistro = fechaHoraRegistro;
-        this.fechaIstalacion = fechaIstalacion;
+        this.fechaInstalacion = fechaIstalacion;
         this.horaInstalacion = horaInstalacion;
+        this.fechaHoraAprobacionRechazo = fechaHoraAprobacionRechazo;
     }
 
     // para cliente con solicitud rechazada
     private String motivoRechazo;
 
-    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String fechaHoraRegistro,String motivoRechazo) {
+    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String fechaHoraRegistro,String motivoRechazo, String fechaHoraAprobacionRechazo) {
         this.nombre = nombre;
         this.dni = dni;
         this.email = email;
@@ -76,8 +78,8 @@ public class Usuario {
         this.id = id;
         this.fechaHoraRegistro = fechaHoraRegistro;
         this.motivoRechazo = motivoRechazo;
+        this.fechaHoraAprobacionRechazo = fechaHoraAprobacionRechazo;
     }
-
 
     // getters and setter
 
@@ -97,12 +99,12 @@ public class Usuario {
         this.motivoRechazo = motivoRechazo;
     }
 
-    public String getFechaIstalacion() {
-        return fechaIstalacion;
+    public String getFechaInstalacion() {
+        return fechaInstalacion;
     }
 
-    public void setFechaIstalacion(String fechaIstalacion) {
-        this.fechaIstalacion = fechaIstalacion;
+    public void setFechaInstalacion(String fechaInstalacion) {
+        this.fechaInstalacion = fechaInstalacion;
     }
 
     public String getNombre() {
@@ -191,5 +193,14 @@ public class Usuario {
 
     public void setFechaHoraRegistro(String fechaHoraRegistro) {
         this.fechaHoraRegistro = fechaHoraRegistro;
+    }
+
+
+    public String getFechaHoraAprobacionRechazo() {
+        return fechaHoraAprobacionRechazo;
+    }
+
+    public void setFechaHoraAprobacionRechazo(String fechaHoraAprobacionRechazo) {
+        this.fechaHoraAprobacionRechazo = fechaHoraAprobacionRechazo;
     }
 }

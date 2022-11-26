@@ -1,13 +1,9 @@
 package com.pucp.camerasecure.admin;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
-import android.view.ContentInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -80,7 +76,7 @@ public class ListaHistorialSolicitudesAdapter extends RecyclerView.Adapter<Lista
             textView_valor_fechamotivo.setLayoutParams(paramsValue);
         } else if (estadoSolicitud.equals("Aprobado")){
             textView_label_fechamotivo.setText("Fecha de instalación");
-            textView_valor_fechamotivo.setText(usuario.getFechaIstalacion()+" "+usuario.getHoraInstalacion());
+            textView_valor_fechamotivo.setText(usuario.getFechaInstalacion()+" "+usuario.getHoraInstalacion());
         } else if (estadoSolicitud.equals("Rechazado")){
             textView_label_fechamotivo.setText("Motivo");
             textView_valor_fechamotivo.setText(usuario.getMotivoRechazo());

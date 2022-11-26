@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -23,8 +22,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -35,7 +32,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.pucp.camerasecure.R;
 import com.pucp.camerasecure.dto.Usuario;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -224,12 +223,18 @@ public class admin_solicitudespendientes extends Fragment implements OnMapReadyC
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode== Activity.RESULT_OK){
+        if(resultCode == Activity.RESULT_OK){
 
             if(requestCode==REQUEST_CODE_RECHAZAR_SOLICITUD){
 
                 String motivo = data.getStringExtra("motivo");
 
+                // se obtiene fecha actual para fechaHoraAprobacion
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+                Date date = new Date();
+                String fechaHoraAprobacion = String.valueOf(formatter.format(date));
+
+                usuariopendienteActual.setFechaHoraAprobacionRechazo(fechaHoraAprobacion);
                 usuariopendienteActual.setEstadoSolicitud("Rechazado");
                 usuariopendienteActual.setMotivoRechazo(motivo);
 
@@ -244,7 +249,13 @@ public class admin_solicitudespendientes extends Fragment implements OnMapReadyC
                 String hora = data.getStringExtra("hora");
                 Log.d("msg", fecha + " "+ hora);
 
-                usuariopendienteActual.setFechaIstalacion(fecha);
+                // se obtiene fecha actual para fechaHoraAprobacion
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+                Date date = new Date();
+                String fechaHoraAprobacion = String.valueOf(formatter.format(date));
+
+                usuariopendienteActual.setFechaHoraAprobacionRechazo(fechaHoraAprobacion);
+                usuariopendienteActual.setFechaInstalacion(fecha);
                 usuariopendienteActual.setHoraInstalacion(hora);
                 usuariopendienteActual.setEstadoSolicitud("Aprobado");
 
@@ -253,7 +264,6 @@ public class admin_solicitudespendientes extends Fragment implements OnMapReadyC
 
                 // se manda la notificacion (correo + notificacion app) al cliente, indicando que se acepto su solicitud
                 notificarCliente("Aprobado");
-
 
             }
 
