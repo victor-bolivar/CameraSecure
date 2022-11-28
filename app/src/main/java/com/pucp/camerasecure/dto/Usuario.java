@@ -85,6 +85,7 @@ public class Usuario implements Serializable {
 
     // para cliente con solicitud Instalada
     private String urlCamara;
+    private String camaraInstaladaImagen;
 
     public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String fechaHoraRegistro, String fechaIstalacion, String horaInstalacion, String fechaHoraAprobacionRechazo, String urlCamara) {
         this.nombre = nombre;
@@ -233,5 +234,13 @@ public class Usuario implements Serializable {
 
     public void setUrlCamara(String urlCamara) {
         this.urlCamara = urlCamara;
+    }
+
+    public String getCamaraInstaladaImagen() {
+        return camaraInstaladaImagen;
+    }
+
+    public void setCamaraInstaladaImagen(String camaraInstaladaImagen) {
+        this.camaraInstaladaImagen = camaraInstaladaImagen;
     }
 }

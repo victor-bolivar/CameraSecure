@@ -26,6 +26,10 @@ public class admin_mostrarcamara extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_mostrarcamara);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Visualizar cámara");
+        }
+
         Intent intent = getIntent();
         Usuario usuario = (Usuario) intent.getSerializableExtra("usuario");
         websiteUrl = usuario.getUrlCamara();
