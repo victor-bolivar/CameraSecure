@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -101,6 +102,10 @@ public class admin_registrarcamara extends AppCompatActivity {
                 progressDialog.setMessage("Guardando...");
                 progressDialog.show();
 
+                // se guarda la imagen localmente
+                Bitmap bitmap = BitmapFactory.decodeByteArray(imagenBb, 0, imagenBb.length);
+                MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "camaraInstalada_"+usuario.getId() , "Foto de la instalacion correcta de la camara de seguridad del usuario "+usuario.getNombre()+" con ID: " +usuario.getId());
+                // se guarda la imagen en nube
                 StorageReference imageFolder = FirebaseStorage.getInstance().getReference().child("camarasInstaladas");
                 StorageReference imageName = imageFolder.child(usuario.getId()); // nombre a guardar en Fire Storage
                 imageName.putBytes(imagenBb)

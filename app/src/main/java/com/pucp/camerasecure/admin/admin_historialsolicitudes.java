@@ -196,7 +196,7 @@ public class admin_historialsolicitudes extends Fragment {
                                                 data.get("estadoSolicitud"),
                                                 ds.getKey(),
                                                 data.get("fechaHoraRegistro"),
-                                                data.get("fechaIstalacion"),
+                                                data.get("fechaInstalacion"),
                                                 data.get("horaInstalacion"),
                                                 data.get("fechaHoraAprobacionRechazo")
                                         ));
@@ -231,7 +231,7 @@ public class admin_historialsolicitudes extends Fragment {
                                                 data.get("estadoSolicitud"),
                                                 ds.getKey(),
                                                 data.get("fechaHoraRegistro"),
-                                                data.get("fechaIstalacion"),
+                                                data.get("fechaInstalacion"),
                                                 data.get("horaInstalacion"),
                                                 data.get("fechaHoraAprobacionRechazo"),
                                                 data.get("urlCamara")
