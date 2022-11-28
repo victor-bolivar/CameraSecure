@@ -45,5 +45,9 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
+    // para la reproduccion de video streaming
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.google.android.exoplayer:exoplayer:2.14.1'
+
 
 }

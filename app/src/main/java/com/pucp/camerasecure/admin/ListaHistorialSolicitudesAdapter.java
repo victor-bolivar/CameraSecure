@@ -1,6 +1,7 @@
 package com.pucp.camerasecure.admin;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,8 @@ public class ListaHistorialSolicitudesAdapter extends RecyclerView.Adapter<Lista
         TextView textView_label_fechamotivo = holder.itemView.findViewById(R.id.admin_historial_enunciado_fechamotivo);
         TextView textView_valor_fechamotivo = holder.itemView.findViewById(R.id.admin_historial_fechamotivo);
         TextView textView_valor_fecharegistro = holder.itemView.findViewById(R.id.admin_historial_fecharegistro);
+        TextView textView_label_url = holder.itemView.findViewById(R.id.admin_historial_enunciado_urlcamara);
+        TextView textView_url = holder.itemView.findViewById(R.id.admin_historial_urlcamara);
 
         textView_nombre.setText(usuario.getNombre());
         textView_email.setText(usuario.getEmail());
@@ -74,24 +77,72 @@ public class ListaHistorialSolicitudesAdapter extends RecyclerView.Adapter<Lista
             ConstraintLayout.LayoutParams paramsValue = (ConstraintLayout.LayoutParams) textView_valor_fechamotivo.getLayoutParams();
             paramsValue.height = 0;
             textView_valor_fechamotivo.setLayoutParams(paramsValue);
+
+            ConstraintLayout.LayoutParams paramsLabel2 = (ConstraintLayout.LayoutParams) textView_label_url.getLayoutParams();
+            paramsLabel2.height = 0;
+            textView_label_url.setLayoutParams(paramsLabel2);
+
+            ConstraintLayout.LayoutParams paramsValue2 = (ConstraintLayout.LayoutParams) textView_url.getLayoutParams();
+            paramsValue2.height = 0;
+            textView_url.setLayoutParams(paramsValue2);
+
         } else if (estadoSolicitud.equals("Aprobado")){
             textView_label_fechamotivo.setText("Fecha de instalación");
             textView_valor_fechamotivo.setText(usuario.getFechaInstalacion()+" "+usuario.getHoraInstalacion());
+
+            // se oculta la url
+            ConstraintLayout.LayoutParams paramsLabel2 = (ConstraintLayout.LayoutParams) textView_label_url.getLayoutParams();
+            paramsLabel2.height = 0;
+            textView_label_url.setLayoutParams(paramsLabel2);
+
+            ConstraintLayout.LayoutParams paramsValue2 = (ConstraintLayout.LayoutParams) textView_url.getLayoutParams();
+            paramsValue2.height = 0;
+            textView_url.setLayoutParams(paramsValue2);
+
         } else if (estadoSolicitud.equals("Rechazado")){
             textView_label_fechamotivo.setText("Motivo");
             textView_valor_fechamotivo.setText(usuario.getMotivoRechazo());
+
+            // se oculta la url
+            ConstraintLayout.LayoutParams paramsLabel2 = (ConstraintLayout.LayoutParams) textView_label_url.getLayoutParams();
+            paramsLabel2.height = 0;
+            textView_label_url.setLayoutParams(paramsLabel2);
+
+            ConstraintLayout.LayoutParams paramsValue2 = (ConstraintLayout.LayoutParams) textView_url.getLayoutParams();
+            paramsValue2.height = 0;
+            textView_url.setLayoutParams(paramsValue2);
+
+        } else if (estadoSolicitud.equals("Instalado")){
+            textView_label_fechamotivo.setText("Fecha de instalación");
+            textView_valor_fechamotivo.setText(usuario.getFechaInstalacion()+" "+usuario.getHoraInstalacion());
+            textView_label_url.setText("Aceeso a cámara: ");
+            textView_url.setText(usuario.getUrlCamara());
         }
 
-//        // 3. onClick para ir a editar
-//        ConstraintLayout constraintLayout = holder.itemView.findViewById(R.id.uti_dispositivo_fondo);
-//        constraintLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(context, uti_editardispositivo.class);
-//                intent.putExtra("dispositivo", dispositivo);
-//                context.startActivity(intent);
-//            }
-//        });
+        // 3. onClick para ir a editar
+        // TODO dependiendo si es Aprobado -> SE IRIA A REGISTRAR
+        ConstraintLayout constraintLayout = holder.itemView.findViewById(R.id.admin_historialsolicitud_layout);
+        if (estadoSolicitud.equals("Aprobado")){
+            constraintLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, admin_registrarcamara.class);
+                    intent.putExtra("usuario", usuario);
+                    context.startActivity(intent);
+                }
+            });
+        } else if (estadoSolicitud.equals("Instalado")){
+            constraintLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, admin_mostrarcamara.class);
+                    intent.putExtra("usuario", usuario);
+                    context.startActivity(intent);
+                }
+            });
+
+        }
+
     }
 
     @Override

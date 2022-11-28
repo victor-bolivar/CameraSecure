@@ -4,17 +4,16 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -90,7 +89,6 @@ public class admin_solicitudespendientes extends Fragment implements OnMapReadyC
         textView_direccion = view.findViewById(R.id.admin_solicitudespendientes_direccion);
         floatingActionButton_aceptar = view.findViewById(R.id.admin_aceptarsolicitud);
         floatingActionButton_rechazar = view.findViewById(R.id.admin_cancelarsolicitud);
-
 
         return view;
     }

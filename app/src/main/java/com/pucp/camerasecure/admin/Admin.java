@@ -1,5 +1,12 @@
 package com.pucp.camerasecure.admin;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,13 +14,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -66,17 +66,9 @@ public class Admin extends AppCompatActivity {
                         fragment = new admin_solicitudespendientes();
                         title  = "Solicitudes pendientes";
                         break;
-                    case R.id.admin_nav_visualizarcamaras:
-                        fragment = new admin_visualizarcamaras();
-                        title  = "Visualizar cámaras";
-                        break;
                     case R.id.admin_nav_historialsolicitudes:
                         fragment = new admin_historialsolicitudes();
                         title  = "Historial de solicitudes";
-                        break;
-                    case R.id.admin_nav_registronuevodispositivo:
-                        fragment = new admin_registrardispositivo();
-                        title  = "Registrar un nuevo dispositivo";
                         break;
                     case R.id.admin_nav_micuenta:
                         fragment = new admin_micuenta();

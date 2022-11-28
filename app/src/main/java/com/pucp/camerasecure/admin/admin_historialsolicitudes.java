@@ -1,7 +1,11 @@
 package com.pucp.camerasecure.admin;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,14 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.SearchView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,7 +24,6 @@ import com.pucp.camerasecure.dto.Usuario;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 
 public class admin_historialsolicitudes extends Fragment {
 
@@ -223,8 +218,24 @@ public class admin_historialsolicitudes extends Fragment {
                                                 data.get("fechaHoraAprobacionRechazo")
                                         ));
                                     } else if (data.get("estadoSolicitud").equals("Instalado") && data.get("estadoSolicitud").contains(filtroActualEstadosolicitud)){
-                                        // TODO 4. se evalua si es una SOLICITUD Instalado
-
+                                        //  se evalua si es una SOLICITUD Instalado
+                                        arraylistUsuarios.add(new Usuario(
+                                                data.get("nombre"),
+                                                data.get("dni"),
+                                                data.get("email"),
+                                                data.get("celular"),
+                                                data.get("rol"),
+                                                data.get("direccionLatitud"),
+                                                data.get("direccionLongitud"),
+                                                data.get("direccionNombre"),
+                                                data.get("estadoSolicitud"),
+                                                ds.getKey(),
+                                                data.get("fechaHoraRegistro"),
+                                                data.get("fechaIstalacion"),
+                                                data.get("horaInstalacion"),
+                                                data.get("fechaHoraAprobacionRechazo"),
+                                                data.get("urlCamara")
+                                        ));
                                     }
                                 }
 

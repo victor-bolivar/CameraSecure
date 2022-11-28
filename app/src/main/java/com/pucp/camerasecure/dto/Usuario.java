@@ -1,6 +1,8 @@
 package com.pucp.camerasecure.dto;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
 
     // atributos tanto para usuario Admin como para Cliente
     private String nombre;
@@ -79,6 +81,27 @@ public class Usuario {
         this.fechaHoraRegistro = fechaHoraRegistro;
         this.motivoRechazo = motivoRechazo;
         this.fechaHoraAprobacionRechazo = fechaHoraAprobacionRechazo;
+    }
+
+    // para cliente con solicitud Instalada
+    private String urlCamara;
+
+    public Usuario(String nombre, String dni, String email, String celular, String rol, String direccionLatitud, String direccionLongitud, String direccionNombre, String estadoSolicitud, String id, String fechaHoraRegistro, String fechaIstalacion, String horaInstalacion, String fechaHoraAprobacionRechazo, String urlCamara) {
+        this.nombre = nombre;
+        this.dni = dni;
+        this.email = email;
+        this.celular = celular;
+        this.rol = rol;
+        this.direccionLatitud = direccionLatitud;
+        this.direccionLongitud = direccionLongitud;
+        this.direccionNombre = direccionNombre;
+        this.estadoSolicitud = estadoSolicitud;
+        this.id = id;
+        this.fechaHoraRegistro = fechaHoraRegistro;
+        this.fechaInstalacion = fechaIstalacion;
+        this.horaInstalacion = horaInstalacion;
+        this.fechaHoraAprobacionRechazo = fechaHoraAprobacionRechazo;
+        this.urlCamara = urlCamara;
     }
 
     // getters and setter
@@ -202,5 +225,13 @@ public class Usuario {
 
     public void setFechaHoraAprobacionRechazo(String fechaHoraAprobacionRechazo) {
         this.fechaHoraAprobacionRechazo = fechaHoraAprobacionRechazo;
+    }
+
+    public String getUrlCamara() {
+        return urlCamara;
+    }
+
+    public void setUrlCamara(String urlCamara) {
+        this.urlCamara = urlCamara;
     }
 }
