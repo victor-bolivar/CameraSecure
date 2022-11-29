@@ -100,7 +100,7 @@ public class ListaHistorialSolicitudesAdapter extends RecyclerView.Adapter<Lista
             textView_url.setLayoutParams(paramsValue2);
 
         } else if (estadoSolicitud.equals("Rechazado")){
-            textView_label_fechamotivo.setText("Motivo");
+            textView_label_fechamotivo.setText("Motivo:");
             textView_valor_fechamotivo.setText(usuario.getMotivoRechazo());
 
             // se oculta la url

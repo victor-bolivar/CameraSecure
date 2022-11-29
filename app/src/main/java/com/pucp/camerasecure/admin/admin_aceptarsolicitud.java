@@ -57,7 +57,15 @@ public class admin_aceptarsolicitud extends AppCompatActivity {
         TimePickerDialog d = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                hora = String.valueOf(hourOfDay) +":"+String.valueOf(minute) ;
+                if (minute <10 && hourOfDay<10){
+                    hora = "0"+String.valueOf(hourOfDay) +":0"+String.valueOf(minute) ;
+                } else if (hourOfDay<10){
+                    hora = "0"+String.valueOf(hourOfDay) +":"+String.valueOf(minute) ;
+                } else if (minute <10){
+                    hora = String.valueOf(hourOfDay) +":0"+String.valueOf(minute) ;
+                } else {
+                    hora = String.valueOf(hourOfDay) +":"+String.valueOf(minute) ;
+                }
                 textView_hora.setText(hora);
             }
         }, 0, 0, true);
@@ -101,7 +109,6 @@ public class admin_aceptarsolicitud extends AppCompatActivity {
         String dateCurrent = String.valueOf(formatter.format(date));
 
         try{
-            // If you already have date objects then skip 1
 
             //1
             // Create 2 dates starts

@@ -102,5 +102,24 @@
             android:layout_height="0dp"
             android:text="Su solicitud ha sido registrada. Por favor, espere la confirmación del administrador." />
 
+        <TextView
+            android:id="@+id/cliente_estadosolicitud_camarainstaladaCorrectamenteFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/cliente_estadosolicitud_camarainstaladaCorrectamente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <ImageView
+            android:id="@+id/cliente_estadosolicitud_fotocamarainstalada"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_visualizarcamaras" />
+
     </LinearLayout>
 </FrameLayout>

@@ -15,7 +15,7 @@ import com.pucp.camerasecure.dto.Usuario;
 
 public class admin_mostrarcamara extends AppCompatActivity {
 
-    private String websiteUrl = "rtsp://192.168.0.6:8080/h264_pcm.sdp";
+    private String websiteUrl;
     private ProgressDialog progressDialog;
     VideoView videoView;
     PlayerView playerView;

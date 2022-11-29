@@ -3,12 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".cliente.cliente_micamara">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <VideoView
+        android:id="@+id/cliente_VideoViewId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/cliente_exoplayer_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="#000000"
+        app:fastforward_increment="10000"
+        app:hide_on_touch="true"
+        app:player_layout_id="@layout/exo_player_view"
+        app:resize_mode="fit"
+        app:show_timeout="4000"
+        app:surface_type="surface_view"
+        app:rewind_increment="10000"
+        app:shutter_background_color="#000000"
+        app:use_controller="true"/>
 
 </FrameLayout>

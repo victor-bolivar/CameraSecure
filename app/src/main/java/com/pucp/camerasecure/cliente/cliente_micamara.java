@@ -1,19 +1,22 @@
 package com.pucp.camerasecure.cliente;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-
+import com.google.android.exoplayer2.MediaItem;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -23,6 +26,12 @@ import java.util.HashMap;
 
 
 public class cliente_micamara extends Fragment {
+
+    private String websiteUrl;
+    private ProgressDialog progressDialog;
+    VideoView videoView;
+    PlayerView playerView;
+    SimpleExoPlayer simpleExoPlayer;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -40,6 +49,7 @@ public class cliente_micamara extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
+        playerView = view.findViewById(R.id.cliente_exoplayer_view);
         cargarDatos();
 
         return view;
@@ -73,7 +83,12 @@ public class cliente_micamara extends Fragment {
                     alert11.show();
 
                 } else {
-                    // TODO cargar los datos
+
+                    websiteUrl = data.get("urlCamara");
+                    progressDialog = new ProgressDialog(getContext());
+                    progressDialog.setMessage("Buffering...");
+                    progressDialog.setCancelable(true);
+                    playVideo();
                 }
 
 
@@ -81,5 +96,22 @@ public class cliente_micamara extends Fragment {
         });
 
     }
+
+    private void playVideo(){
+        try {
+
+            simpleExoPlayer = new SimpleExoPlayer.Builder(getContext()).build();
+            playerView.setPlayer(simpleExoPlayer);
+            MediaItem mediaItem = MediaItem.fromUri(websiteUrl);
+            simpleExoPlayer.addMediaItem(mediaItem);
+            simpleExoPlayer.prepare();
+            simpleExoPlayer.play();
+
+        } catch (Exception e){
+            progressDialog.dismiss();
+        }
+    }
+
+
 
 }

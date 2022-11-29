@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -51,7 +52,7 @@ public class admin_registrarcamara extends AppCompatActivity {
 
         // 2. se cambia el titulo a 'Solicitudes pendientes' ya que es el Fragment por defecto
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Visualizar cámara");
+            getSupportActionBar().setTitle("Registrar cámara");
         }
 
         // initialize firebase auth
@@ -159,6 +160,10 @@ public class admin_registrarcamara extends AppCompatActivity {
                 thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
                 imagenBb = bytes.toByteArray();
                 imageView.setImageBitmap(thumbnail);
+
+                // se elimina el text view recordatorio para que el usuario tome la foto
+                TextView textView_recordatorio = findViewById(R.id.admin_registrarcamara_enunciadootomarfoto);
+                textView_recordatorio.setText("");
 
             }
         }
